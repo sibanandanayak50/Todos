@@ -35,17 +35,13 @@ export default function SingleUserDataScreen({ navigation, route }) {
         <View style={styles.footer}>
             <View style={styles.secondFooter}>
                 <View style={styles.thirdFooter}>
-                    <View style={styles.dot} />
+                    <View style={[styles.dot, { backgroundColor: completed ? 'green' : '#e9ebf3' }]} />
                 </View>
                 <View style={styles.textArea}>
 
-                    <Text style={styles.titleText}>
-                        {title}
-                    </Text>
+                    <Text style={styles.titleText}>{title}</Text>
 
-                    <Text style={styles.nameText}>
-                        {username}
-                    </Text>
+                    <Text style={styles.nameText}>{username}</Text>
 
                 </View>
             </View>
@@ -127,7 +123,6 @@ const styles = StyleSheet.create({
         width: 15,
         height: 15,
         borderRadius: 7.5,
-        backgroundColor: completed ? 'green' : '#e9ebf3',
         elevation: 5
     },
     textArea: {

@@ -57,16 +57,16 @@ export default function HomeScreen({ navigation }) {
 
 
 
-    const Item = ({ title, completed, name, userId }) => (
+    const Item = ({ title, name, userId, completed }) => (
         <TouchableWithoutFeedback onPress={() => navigation.navigate('SingleUserDataScreen', { userId: userId, username: name })}>
             <View style={styles.footer}>
                 <View style={styles.secondFooter}>
-                    <View style={thirdFooter}>
-                        <View style={styles.dot} />
+                    <View style={styles.thirdFooter}>
+                        <View style={[styles.dot, { backgroundColor: completed ? 'green' : '#e9ebf3' }]} />
                     </View>
                     <View style={styles.textArea}>
-                        <Text style={styles.titleText}>  {title} </Text>
-                        <Text style={styles.nameText}> {name} </Text>
+                        <Text style={styles.titleText}>{title}</Text>
+                        <Text style={styles.nameText}>{name}</Text>
                     </View>
                 </View>
             </View>
@@ -75,8 +75,9 @@ export default function HomeScreen({ navigation }) {
 
 
     const renderItem = ({ item }) => {
-        return <Item title={item.title} completed={item.completed} name={item.username} userId={item.userId} />
+        return <Item title={item.title} name={item.username} completed={item.completed} userId={item.userId} />
     };
+
 
     return (
 
@@ -91,7 +92,7 @@ export default function HomeScreen({ navigation }) {
                         source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1024px-Hamburger_icon.svg.png' }}
                     />
                     <View style={{ flex: 1, paddingLeft: 20 }}>
-                        <Text>To Dos</Text>
+                        <Text style={{ fontSize: 20, fontWeight: '600', color: 'black' }}>To Dos</Text>
                     </View>
                     <AntDesign name='search1' size={25} color='black' />
                 </View>
@@ -128,9 +129,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20
     },
     image: {
-        color: 'black',
-        fontSize: 20,
-        fontWeight: '600'
+        height: 30,
+        width: 30,
     },
     footer: {
         marginTop: 10,
@@ -153,11 +153,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     dot: {
-        width: 15,
-        height: 15,
-        borderRadius: 7.5,
-        backgroundColor: completed ? 'green' : '#e9ebf3',
-        elevation: 5
+        width: 15, height: 15, borderRadius: 7.5, elevation: 5
     },
     textArea: {
         width: '85%',
